@@ -64,13 +64,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
-  ffi:
-    dependency: transitive
-    description:
-      name: ffi
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.2"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -184,13 +177,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.2"
-  quiver:
-    dependency: transitive
-    description:
-      name: quiver
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.1+1"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -243,17 +229,10 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "08c3df135fd5dbb6de21482d6247ec9ce7f81ee4"
+      resolved-ref: "0ee6c7e1700b652e5d00ba9f587f47feab41818b"
       url: "https://github.com/anohene1/flutter_tflite.git"
     source: git
     version: "1.1.2"
-  tflite_flutter:
-    dependency: "direct main"
-    description:
-      name: tflite_flutter
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.9.0"
   typed_data:
     dependency: transitive
     description:
