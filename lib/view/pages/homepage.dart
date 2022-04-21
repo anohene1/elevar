@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       loading = true;
     });
-    Upscaler upscaler = Upscaler(image: image, modelPath: "esrgan.tflite");
+    Upscaler upscaler = Upscaler(image: image, modelPath: "srwnn.tflite");
     newImage = await upscaler.upscale();
     loading = false;
     setState(() {});

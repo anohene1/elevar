@@ -20,12 +20,12 @@ class Upscaler {
 
     //normalices input = (input/127.5) - 1
     ImageProcessor imageProcessor = ImageProcessorBuilder()
-        .add(NormalizeOp(0, 127.5))
+        .add(NormalizeOp(0, 65.5))
         .add(NormalizeOp(1, 1))
         .build();
     tensorImage = imageProcessor.process(tensorImage);
 
-    //Prepares to reshapes img buffer to [1,m,n,3]
+    //Prepares to reshapes img buffer to [1,m,n,3]  
     TensorBuffer reShapeImgBuffer = TensorBuffer.createFrom(tensorImage.getTensorBuffer(), TfLiteType.float32);
     //print(reShapeImgBuffer.shape);
     //reshapes img buffer to [1,m,n,3]
@@ -72,7 +72,7 @@ class Upscaler {
 
     var imgPath = await getTemporaryDirectory();
     File twoXimage = new File('${imgPath.path}/resizedImg.png')..writeAsBytesSync(imagePackage.encodePng(output.image));
-
+    print('done');
     return twoXimage;
   }
 }
