@@ -20,7 +20,7 @@ class Upscaler {
 
     //normalices input = (input/127.5) - 1
     ImageProcessor imageProcessor = ImageProcessorBuilder()
-        .add(NormalizeOp(0, 65.5))
+        .add(NormalizeOp(0, 55.5))
         .add(NormalizeOp(1, 1))
         .build();
     tensorImage = imageProcessor.process(tensorImage);
