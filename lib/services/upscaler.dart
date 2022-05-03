@@ -11,6 +11,7 @@ class Upscaler {
 
   Upscaler({required this.modelPath, required this.image});
 
+
   Future upscale() async {
     TensorImage tensorImage = TensorImage.fromFile(image!);
     //print('tensorimage');
@@ -19,24 +20,25 @@ class Upscaler {
     //print(tensorImage.buffer.asUint8List());
 
     //normalices input = (input/127.5) - 1
-    ImageProcessor imageProcessor = ImageProcessorBuilder()
-        .add(NormalizeOp(0, 55.5))
-        .add(NormalizeOp(1, 1))
-        .build();
-    tensorImage = imageProcessor.process(tensorImage);
+    // ImageProcessor imageProcessor = ImageProcessorBuilder()
+    //     .add(NormalizeOp(0, 25.5))
+    //     .add(NormalizeOp(1, 1))
+    //     .build();
+    // tensorImage = imageProcessor.process(tensorImage);
 
     //Prepares to reshapes img buffer to [1,m,n,3]  
     TensorBuffer reShapeImgBuffer = TensorBuffer.createFrom(tensorImage.getTensorBuffer(), TfLiteType.float32);
     //print(reShapeImgBuffer.shape);
     //reshapes img buffer to [1,m,n,3]
-    reShapeImgBuffer.resize([1, tensorImage.height.toInt(), tensorImage.width.toInt(), 3]);
+    // reShapeImgBuffer.resize([1, tensorImage.height.toInt(), tensorImage.width.toInt(), 3]);
     //print(reShapeImgBuffer.shape);
 
     //Creates outputTensor as [1,m*2,n*2,3]
-    TensorBuffer probabilityBuffer = TensorBuffer.createFixedSize([1, tensorImage.height.toInt() * 2, tensorImage.width.toInt() * 2, 3], TfLiteType.float32);
+    TensorBuffer probabilityBuffer = TensorBuffer.createFixedSize([1, tensorImage.height.toInt() * 4, tensorImage.width.toInt() * 4, 3], TfLiteType.float32);
     //var interpreterOptions = InterpreterOptions()..useNnApiForAndroid = true;
     //creates model interpreter
     Interpreter interpreter = await Interpreter.fromAsset(modelPath);
+
     //resize interpreter input to match [1,m*2,n*2,3]
     interpreter.resizeInputTensor(0, [1, tensorImage.height.toInt(), tensorImage.width.toInt(), 3]);
     //print('Input Shape:');
@@ -52,15 +54,15 @@ class Upscaler {
     //print(probabilityBuffer.buffer.asFloat32List());
 
     //prepares image from tensor
-    probabilityBuffer.resize([tensorImage.height.toInt()*2, tensorImage.width.toInt()*2, 3]);
+    // probabilityBuffer.resize([tensorImage.height.toInt()*2, tensorImage.width.toInt()*2, 3]);
     //print('out after re');
     //print(probabilityBuffer.shape);
     //print(probabilityBuffer.buffer.asFloat32List());
 
     SequentialProcessor<TensorBuffer> outputProcessor = TensorProcessorBuilder()
-        .add(NormalizeOp(-1, 2))
-        .add(NormalizeOp(0, 0.00392156862))
-        .add(CastOp(TfLiteType.uint8))
+        // .add(NormalizeOp(-1, 2))
+        // .add(NormalizeOp(0, 0.00392156862))
+        // .add(CastOp(TfLiteType.uint8))
         .build();
 
     TensorBuffer outCasted = outputProcessor.process(probabilityBuffer);
