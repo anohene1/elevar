@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       loading = true;
     });
-    Upscaler upscaler = Upscaler(image: image, modelPath: "esrgan.tflite");
+    Upscaler upscaler = Upscaler(image: image, modelPath: "model.tflite");
     newImage = await upscaler.upscale();
     loading = false;
     setState(() {});
@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            image == null ? Container() : Image.file(image!, height: 200,),
+            image == null ? Container() : Image.file(image!, height: 350,),
             ElevatedButton(
                 onPressed: () {
                     pickImage();
@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                 },
                 child: const Text('Upscale Image')),
             // loading == true ? CircularProgressIndicator() : Image.file(newImage!, height: 200,),
-            newImage == null ? Container() : Image.file(newImage!, height: 200,),
+            newImage == null ? Container() : Image.file(newImage!, height: 350,),
 
 
           ],

@@ -35,6 +35,7 @@ class Upscaler {
 
     //Creates outputTensor as [1,m*2,n*2,3]
     TensorBuffer probabilityBuffer = TensorBuffer.createFixedSize([1, tensorImage.height.toInt() * 4, tensorImage.width.toInt() * 4, 3], TfLiteType.float32);
+    // TensorBuffer probabilityBuffer = TensorBuffer.createFixedSize([1, 128, 128, 3], TfLiteType.float32);
     //var interpreterOptions = InterpreterOptions()..useNnApiForAndroid = true;
     //creates model interpreter
     Interpreter interpreter = await Interpreter.fromAsset(modelPath);
