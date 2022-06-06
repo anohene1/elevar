@@ -47,6 +47,14 @@ class _HomePageState extends State<HomePage> {
         elevation: 0,
         title: const Text('Elevar'),
         centerTitle: true,
+        actions: [
+          IconButton(onPressed: (){
+            showAboutDialog(context: context, children: [
+              Text("Elevar uses Enhanced Super-Resolution Generative Adversarial Network (ESRGAN) to increase the resolution of images by 4 times.")
+            ],
+            );
+          }, icon: Icon(CupertinoIcons.info))
+        ],
       ),
       body: Center(
         child: Padding(

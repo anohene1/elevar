@@ -17,8 +17,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //TODO: Change title to suit app
       title: 'Elevar',
+      themeMode: ThemeMode.dark,
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xff0282D34),
         colorScheme: ColorScheme.fromSwatch().copyWith(secondary: const Color(0xff246CFD)),
