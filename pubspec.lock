@@ -142,6 +142,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  gallery_saver:
+    dependency: "direct main"
+    description:
+      name: gallery_saver
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.3.2"
   http:
     dependency: transitive
     description:
@@ -191,6 +198,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.3"
+  juxtapose:
+    dependency: "direct main"
+    description:
+      name: juxtapose
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.2.0"
   lints:
     dependency: transitive
     description:

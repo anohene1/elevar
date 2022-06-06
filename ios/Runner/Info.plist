@@ -42,7 +42,7 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Allow access to Photos to be able to choose an image to upscale</string>
+	<string>Allow access to Photos to be able to choose and save an image</string>
 	<key>NSCameraUsageDescription</key>
 	<string>I may need to be able to take photos, I'm not very sure about that though</string>
 	<key>NSMicrophoneUsageDescription</key>

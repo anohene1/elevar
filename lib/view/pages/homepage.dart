@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:elevar/services/upscaler.dart';
+import 'package:elevar/view/pages/save_page.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 // import 'package:tflite/tflite.dart';
@@ -26,7 +27,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {});
   }
 
-  upscaleImage() async {
+  upscaleImage(BuildContext context) async {
     setState(() {
       loading = true;
     });
@@ -34,6 +35,7 @@ class _HomePageState extends State<HomePage> {
     newImage = await upscaler.upscale();
     loading = false;
     setState(() {});
+    Navigator.push(context, MaterialPageRoute(builder: (context) => SavePage(newImage: newImage!, oldImage: image!,)));
   }  //
   // upscaleImage() async {
   //   print('Upscale started');
@@ -77,7 +79,7 @@ class _HomePageState extends State<HomePage> {
                 child: const Text('Pick Image')),
             ElevatedButton(
                 onPressed: () {
-                  upscaleImage();
+                  upscaleImage(context);
                 },
                 child: const Text('Upscale Image')),
             // loading == true ? CircularProgressIndicator() : Image.file(newImage!, height: 200,),
