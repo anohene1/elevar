@@ -1,3 +1,4 @@
+import 'package:elevar/services/alert.dart';
 import 'package:flutter/material.dart';
 import 'package:gallery_saver/gallery_saver.dart';
 import 'dart:io';
@@ -13,24 +14,32 @@ class SavePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF282D34),
+        backgroundColor: Color(0xff0282D34),
         elevation: 0,
         title: Text('Preview Image'),
         centerTitle: true,
       ),
       body: Column(
         children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('New', style: TextStyle(fontSize: 18, color: Colors.white),),
+              Text('Old', style: TextStyle(fontSize: 18, color: Colors.white),),
+            ],
+          ),
           Expanded(
             child: Center(
                 child:
                 Juxtapose(
                   backgroundWidget: Image.file(oldImage),
                   foregroundWidget: Image.file(newImage),
-                  backgroundColor: Color(0xFF282D34),)),
+                  backgroundColor: Color(0xff0282D34),)),
           ),
           InkWell(
             onTap: () {
               GallerySaver.saveImage(newImage.path, albumName: 'Elevar');
+              showAlert(context);
             },
             child: Material(
               color: Colors.transparent,

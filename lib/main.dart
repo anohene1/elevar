@@ -21,6 +21,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Elevar',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: Color(0xff0282D34)
       ),
       home: HomePage(),
     );
