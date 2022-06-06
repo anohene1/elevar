@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:elevar/services/upscaler.dart';
 import 'package:elevar/view/pages/save_page.dart';
+import 'package:elevar/view/widgets/big_button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 // import 'package:tflite/tflite.dart';
@@ -66,27 +68,40 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xff0282D34),
+        elevation: 0,
+        title: Text('Elevar'),
+        centerTitle: true,
+      ),
       body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            image == null ? Container() : Image.file(image!, height: 350,),
-            ElevatedButton(
-                onPressed: () {
-                    pickImage();
-                },
-                child: const Text('Pick Image')),
-            ElevatedButton(
-                onPressed: () {
-                  upscaleImage(context);
-                },
-                child: const Text('Upscale Image')),
-            // loading == true ? CircularProgressIndicator() : Image.file(newImage!, height: 200,),
-            newImage == null ? Container() : Image.file(newImage!, height: 350,),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              image == null ? Icon(Icons.photo, size: 50, color: Colors.white,) : Image.file(image!,),
+                  SizedBox(height: 30,),
+                  BigButton(
+                      label: 'Pick Image',
+                      icon: CupertinoIcons.photo,
+                    onTap: () {
+                        pickImage();
+                    },
+                  ),
+                  SizedBox(height: 20,),
+                  BigButton(
+                      label: 'Upscale Image',
+                      icon: Icons.arrow_circle_up_sharp,
+                    onTap: () {
+                        upscaleImage(context);
+                    },
+                  ),
+              loading ? CircularProgressIndicator.adaptive() : Container()
 
-
-          ],
+            ],
+          ),
         ),
       ),
     );

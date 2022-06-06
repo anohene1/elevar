@@ -21,12 +21,15 @@ class SavePage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text('New', style: TextStyle(fontSize: 18, color: Colors.white),),
-              Text('Old', style: TextStyle(fontSize: 18, color: Colors.white),),
-            ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('New', style: TextStyle(fontSize: 18, color: Colors.white),),
+                Text('Old', style: TextStyle(fontSize: 18, color: Colors.white),),
+              ],
+            ),
           ),
           Expanded(
             child: Center(
@@ -38,8 +41,7 @@ class SavePage extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              GallerySaver.saveImage(newImage.path, albumName: 'Elevar');
-              showAlert(context);
+              GallerySaver.saveImage(newImage.path, albumName: 'Elevar').then((value) => showAlert(context));
             },
             child: Material(
               color: Colors.transparent,
