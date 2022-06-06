@@ -1,12 +1,11 @@
 import 'dart:io';
 
 import 'package:elevar/services/upscaler.dart';
-import 'package:elevar/view/pages/save_page.dart';
+import 'package:elevar/view/pages/preview_page.dart';
 import 'package:elevar/view/widgets/big_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-// import 'package:tflite/tflite.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -37,41 +36,16 @@ class _HomePageState extends State<HomePage> {
     newImage = await upscaler.upscale();
     loading = false;
     setState(() {});
-    Navigator.push(context, MaterialPageRoute(builder: (context) => SavePage(newImage: newImage!, oldImage: image!,)));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => PreviewPage(newImage: newImage!, oldImage: image!,)));
   }  //
-  // upscaleImage() async {
-  //   print('Upscale started');
-  //   output = await Tflite.runModelOnImage(path: image!.path);
-  //   print(output);
-  // }
-  //
-  // loadModel() async {
-  //   await Tflite.loadModel(model: 'assets/esrgan.tflite', useGpuDelegate: true);
-  // }
-  //
-  // closeModel() async {
-  //   await Tflite.close();
-  // }
-  //
-  // @override
-  // void initState() {
-  //   loadModel();
-  //   super.initState();
-  // }
-  //
-  // @override
-  // void dispose() {
-  //   closeModel();
-  //   super.dispose();
-  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff0282D34),
+        backgroundColor: const Color(0xff0282d34),
         elevation: 0,
-        title: Text('Elevar'),
+        title: const Text('Elevar'),
         centerTitle: true,
       ),
       body: Center(
@@ -81,8 +55,8 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              image == null ? Icon(Icons.photo, size: 50, color: Colors.white,) : Image.file(image!,),
-                  SizedBox(height: 30,),
+              image == null ? const Icon(Icons.photo, size: 50, color: Colors.white,) : Image.file(image!,),
+                  const SizedBox(height: 30,),
                   BigButton(
                       label: 'Pick Image',
                       icon: CupertinoIcons.photo,
@@ -90,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                         pickImage();
                     },
                   ),
-                  SizedBox(height: 20,),
+                  const SizedBox(height: 20,),
                   BigButton(
                       label: 'Upscale Image',
                       icon: Icons.arrow_circle_up_sharp,
@@ -98,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                         upscaleImage(context);
                     },
                   ),
-              loading ? CircularProgressIndicator.adaptive() : Container()
+              loading ? const CircularProgressIndicator.adaptive() : Container()
 
             ],
           ),

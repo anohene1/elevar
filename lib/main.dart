@@ -20,10 +20,10 @@ class _MyAppState extends State<MyApp> {
       //TODO: Change title to suit app
       title: 'Elevar',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Color(0xff0282D34)
+        scaffoldBackgroundColor: const Color(0xff0282D34),
+        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: const Color(0xff246CFD)),
       ),
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }

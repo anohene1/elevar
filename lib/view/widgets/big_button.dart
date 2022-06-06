@@ -16,8 +16,8 @@ class BigButton extends StatelessWidget {
       child: Container(
         // width: double.infinity,
         height: 70,
-        padding: EdgeInsets.all(10.0),
-        decoration: BoxDecoration(color: Color(0xff246CFD), borderRadius: BorderRadius.circular(10)),
+        padding: const EdgeInsets.all(10.0),
+        decoration: BoxDecoration(color: const Color(0xff246CFD), borderRadius: BorderRadius.circular(10)),
         child: Stack(
           children: [
             Positioned(
@@ -25,7 +25,7 @@ class BigButton extends StatelessWidget {
               child: Container(
                 width: 35,
                 height: 35,
-                decoration: BoxDecoration(color: Color(0xffA06AFA), shape: BoxShape.circle),
+                decoration: const BoxDecoration(color: Color(0xffA06AFA), shape: BoxShape.circle),
                 child: Icon(icon, color: Colors.white, size: 20)),),
             Row(
               children: [
@@ -33,7 +33,7 @@ class BigButton extends StatelessWidget {
                   child: Container(
                     height: 70,
                     alignment: Alignment.center,
-                    child: Text(label, style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold)),
+                    child: Text(label, style: const TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold)),
 
                   ),
                 ),

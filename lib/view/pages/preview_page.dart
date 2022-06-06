@@ -5,18 +5,18 @@ import 'dart:io';
 
 import 'package:juxtapose/juxtapose.dart';
 
-class SavePage extends StatelessWidget {
+class PreviewPage extends StatelessWidget {
   final File newImage;
   final File oldImage;
-  const SavePage({Key? key, required this.newImage, required this.oldImage}) : super(key: key);
+  const PreviewPage({Key? key, required this.newImage, required this.oldImage}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff0282D34),
+        backgroundColor: const Color(0xff0282d34),
         elevation: 0,
-        title: Text('Preview Image'),
+        title: const Text('Preview Image'),
         centerTitle: true,
       ),
       body: Column(
@@ -25,7 +25,7 @@ class SavePage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
+              children: const [
                 Text('New', style: TextStyle(fontSize: 18, color: Colors.white),),
                 Text('Old', style: TextStyle(fontSize: 18, color: Colors.white),),
               ],
@@ -37,7 +37,7 @@ class SavePage extends StatelessWidget {
                 Juxtapose(
                   backgroundWidget: Image.file(oldImage),
                   foregroundWidget: Image.file(newImage),
-                  backgroundColor: Color(0xff0282D34),)),
+                  backgroundColor: const Color(0xff0282d34),)),
           ),
           InkWell(
             onTap: () {
@@ -49,10 +49,10 @@ class SavePage extends StatelessWidget {
                 alignment: Alignment.center,
                 height: 70,
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color(0xFF246CFE)
                 ),
-                child: Text('Save Image', style: TextStyle(color: Colors.white, fontSize: 20),),
+                child: const Text('Save Image', style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
               ),
             )
           )
